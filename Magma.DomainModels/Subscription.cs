@@ -18,3 +18,4 @@ namespace Magma.DomainModels
 
         public virtual UserAccount UserAccount1 { get; set; }
     }
+}

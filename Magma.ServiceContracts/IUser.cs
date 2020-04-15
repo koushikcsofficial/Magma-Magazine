@@ -11,9 +11,9 @@ namespace Magma.ServiceContracts
         void insertUserAccountAsync(UserAccount ua);
         void insertUserDetailsAsync(UserDetail ud);
 
-        void updateUserAccount(UserAccount ua);
+        void updateUserPassword(UserAccount ua);
         void updateUserDetails(UserDetail ud);
-        void updateUserAccountAsync(UserAccount ua);
+        void updateUserPasswordAsync(UserAccount ua);
         void updateUserDetailsAsync(UserDetail ud);
     }
 }

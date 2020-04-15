@@ -81,17 +81,18 @@ namespace Magma.Web.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public ActionResult Register(string signupfname, string signuplname, int signupage, string signupgender, string signupemail, string signuppass, string signupconpass)
+        public async Task<ActionResult> Register(string signupfname, string signuplname, int signupage, string signupgender, string signupemail, string signuppass, string signupconpass)
         {
+            try
+            {
                 //checking for null entries
-           if (signupemail != null && signupfname != null && signuplname != null && signupage > 0 && signupgender != null && signuppass != null && signupconpass != null)
-           {
+                if (signupemail != null && signupfname != null && signuplname != null && signupage > 0 && signupgender != null && signuppass != null && signupconpass != null)
+                {
                     //cheching if the password and confirm password is same
                     if (signuppass == signupconpass)
                     {
                         ua = new UserAccount();
-                        ud = new UserDetail();
-                        if (user.IsEmailExists(signupemail))
+                        if (await user.IsEmailExistsAsync(signupemail))
                         {
                             ModelState.AddModelError("", "Email Already Exists in User Auth");
                             return View();
@@ -146,6 +147,11 @@ namespace Magma.Web.Controllers
                     ModelState.AddModelError("", "Fields can't be left empty");
                     return View();
                 }
+            }
+            catch (Exception)
+            {
+                return View();
+            }
         }
 
         [HttpGet]

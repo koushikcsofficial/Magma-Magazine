@@ -8,8 +8,14 @@ namespace Magma.Web.Controllers
 {
     public class UserController : Controller
     {
-        // GET: User
+        [AllowAnonymous]
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "User")]
+        public ActionResult AuthorCreation()
         {
             return View();
         }

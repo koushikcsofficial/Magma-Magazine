@@ -108,6 +108,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="FrontEndContents\Auth\css\RegisterStyle.css" />
+    <Content Include="FrontEndContents\Auth\fonts\material-icon\css\material-design-iconic-font.css" />
+    <Content Include="FrontEndContents\Auth\fonts\material-icon\css\material-design-iconic-font.min.css" />
+    <Content Include="FrontEndContents\Auth\fonts\material-icon\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="FrontEndContents\Auth\fonts\montserrat\montserrat-v12-latin-900.svg" />
+    <Content Include="FrontEndContents\Auth\fonts\montserrat\OFL.txt" />
+    <Content Include="FrontEndContents\Auth\images\checked.gif" />
+    <Content Include="FrontEndContents\Auth\images\signup-bg.jpg" />
+    <Content Include="FrontEndContents\Auth\images\unchecked.gif" />
+    <Content Include="FrontEndContents\Auth\vendor\jquery\jquery-ui.min.js" />
+    <Content Include="FrontEndContents\Auth\vendor\jquery\jquery.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -125,7 +136,56 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
+    <Content Include="FrontEndContents\Auth\.sass-cache\21880c0ffe15753a53f8402e9f64e1077e071510\style.scssc" />
+    <Content Include="FrontEndContents\Auth\.sass-cache\2af427b2894d1e78c5806e231aa35d00838a84e0\style.scssc" />
+    <Content Include="FrontEndContents\Auth\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\extend.scssc" />
+    <Content Include="FrontEndContents\Auth\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\fonts.scssc" />
+    <Content Include="FrontEndContents\Auth\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\global.scssc" />
+    <Content Include="FrontEndContents\Auth\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\minxi.scssc" />
+    <Content Include="FrontEndContents\Auth\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\variables.scssc" />
+    <Content Include="FrontEndContents\Auth\.sass-cache\643489b018602f15119d8f44aeb7fc79468873a9\main.scssc" />
+    <Content Include="FrontEndContents\Auth\.sass-cache\643489b018602f15119d8f44aeb7fc79468873a9\responsive.scssc" />
+    <Content Include="FrontEndContents\Auth\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\extend.scssc" />
+    <Content Include="FrontEndContents\Auth\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\fonts.scssc" />
+    <Content Include="FrontEndContents\Auth\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\global.scssc" />
+    <Content Include="FrontEndContents\Auth\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\minxi.scssc" />
+    <Content Include="FrontEndContents\Auth\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\variables.scssc" />
+    <Content Include="FrontEndContents\Auth\.sass-cache\f49285f1317a1cafa93ab4f5de346f92bbc40d58\main.scssc" />
+    <Content Include="FrontEndContents\Auth\.sass-cache\f49285f1317a1cafa93ab4f5de346f92bbc40d58\responsive.scssc" />
+    <Content Include="FrontEndContents\Auth\css\RegisterStyle.css.map" />
+    <Content Include="FrontEndContents\Auth\fonts\material-icon\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="FrontEndContents\Auth\fonts\material-icon\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="FrontEndContents\Auth\fonts\material-icon\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="FrontEndContents\Auth\fonts\material-icon\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="FrontEndContents\Auth\fonts\montserrat\Montserrat-Bold.ttf" />
+    <Content Include="FrontEndContents\Auth\fonts\montserrat\Montserrat-BoldItalic.ttf" />
+    <Content Include="FrontEndContents\Auth\fonts\montserrat\Montserrat-ExtraLight.ttf" />
+    <Content Include="FrontEndContents\Auth\fonts\montserrat\Montserrat-ExtraLightItalic.ttf" />
+    <Content Include="FrontEndContents\Auth\fonts\montserrat\Montserrat-Italic.ttf" />
+    <Content Include="FrontEndContents\Auth\fonts\montserrat\Montserrat-Light.ttf" />
+    <Content Include="FrontEndContents\Auth\fonts\montserrat\Montserrat-Medium.ttf" />
+    <Content Include="FrontEndContents\Auth\fonts\montserrat\Montserrat-Regular.ttf" />
+    <Content Include="FrontEndContents\Auth\fonts\montserrat\Montserrat-SemiBold.ttf" />
+    <Content Include="FrontEndContents\Auth\fonts\montserrat\montserrat-v12-latin-900.eot" />
+    <Content Include="FrontEndContents\Auth\fonts\montserrat\montserrat-v12-latin-900.ttf" />
+    <Content Include="FrontEndContents\Auth\fonts\montserrat\montserrat-v12-latin-900.woff" />
+    <Content Include="FrontEndContents\Auth\fonts\montserrat\montserrat-v12-latin-900.woff2" />
+    <Content Include="FrontEndContents\Auth\scss\common\extend.scss" />
+    <Content Include="FrontEndContents\Auth\scss\common\fonts.scss" />
+    <Content Include="FrontEndContents\Auth\scss\common\global.scss" />
+    <Content Include="FrontEndContents\Auth\scss\common\minxi.scss" />
+    <Content Include="FrontEndContents\Auth\scss\common\variables.scss" />
+    <Content Include="FrontEndContents\Auth\scss\layouts\main.scss" />
+    <Content Include="FrontEndContents\Auth\scss\layouts\responsive.scss" />
+    <Content Include="FrontEndContents\Auth\scss\style.scss" />
     <None Include="packages.config" />
+    <Content Include="Views\Auth\Login.cshtml" />
+    <Content Include="Views\Auth\Register.cshtml" />
+    <Content Include="Views\Auth\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout1.cshtml" />
+    <Content Include="Views\Shared\_Layout2.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -137,8 +197,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\Admin\" />
     <Folder Include="Views\Author\" />
-    <Folder Include="Views\Auth\" />
-    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Magma.DataAccessLayer\Magma.DataAccessLayer.csproj">

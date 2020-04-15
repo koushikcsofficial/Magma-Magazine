@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h2>Index</h2>
+@if (User.Identity.IsAuthenticated)
+{
+    <h4>Hello, </h4><p> @User.Identity.Name</p>
+    <br />
+    <p> This post you can see and can be liked</p>
+    <br />
+    if (User.IsInRole("Author") || User.IsInRole("Admin"))
+    {
+        <a href="~/Author/Index"> Go to the Author Section to add blog</a>
+        <br />
+    }
+    else
+    {
+        <a href="~/User/AuthorCreation">Be an Author and share your blog</a><br/>
+    }
+
+    <a href="~/Auth/Logout">Log out from your account</a>
+}
+else
+{
+    <p> This post you can see but can't be liked</p>
+    <a href="~/Auth/Login">Login to like the blog</a>
+}
+

@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+}
+
+    <section class="signup">
+        <!-- <img src="images/signup-bg.jpg" alt=""> -->
+        <div class="container">
+            <div class="signup-content">
+                <form action="~/Auth/Register" method="POST" id="signup-form" class="signup-form">
+                    @Html.AntiForgeryToken();
+                    <h2 class="form-title">Create account</h2>
+                    <div class="form-group">
+                        <input type="text" class="form-input" name="signupfname" id="signupfname" placeholder="Your First Name" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-input" name="signuplname" id="signuplname" placeholder="Your Last Name" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-input" name="signupage" id="signupage" placeholder="Your Age" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-input" name="signupemail" id="signupemail" placeholder="Your Email" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-input" name="signuppass" id="signuppass" placeholder="Password" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-input" name="signupconpass" id="signupconpass" placeholder="Repeat your password" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="signupgender" style="color:#999;font-weight:bold">Gender (required):</label>
+                        <select name="signupgender" class="form-input" id="signupgender" required>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" required />
+                        <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up" />
+                    </div>
+                </form>
+                <p class="loginhere">
+                    Have already an account ? <a href="#" class="loginhere-link">Login here</a>
+                </p>
+            </div>
+        </div>
+    </section>
+

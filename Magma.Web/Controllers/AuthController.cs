@@ -81,19 +81,17 @@ namespace Magma.Web.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public async Task<ActionResult> Register(string signupfname, string signuplname, int signupage, string signupgender, string signupemail, string signuppass, string signupconpass)
+        public ActionResult Register(string signupfname, string signuplname, int signupage, string signupgender, string signupemail, string signuppass, string signupconpass)
         {
-            try
-            {
                 //checking for null entries
-                if (signupemail != null && signupfname != null && signuplname != null && signupage > 0 && signupgender != null && signuppass != null && signupconpass != null)
-                {
+           if (signupemail != null && signupfname != null && signuplname != null && signupage > 0 && signupgender != null && signuppass != null && signupconpass != null)
+           {
                     //cheching if the password and confirm password is same
                     if (signuppass == signupconpass)
                     {
                         ua = new UserAccount();
                         ud = new UserDetail();
-                        if (await user.IsEmailExistsAsync(signupemail))
+                        if (user.IsEmailExists(signupemail))
                         {
                             ModelState.AddModelError("", "Email Already Exists in User Auth");
                             return View();
@@ -118,13 +116,13 @@ namespace Magma.Web.Controllers
                             {
                                 ua.User_AccountCreatedFrom = "N/A";
                             }
-                            user.insertUserAccountAsync(ua);
+                            user.insertUserAccount(ua);
 
                             //Get the userId from the row to update UserRoleMaster table with the role "User"
                             urm = new UserRoleMaster();
                             urm.User_Id = user.getAccountIdByEmail(signupemail);
                             urm.Role_Id = user.getRoleIdByName("User");
-                            user.insertUserRoleAsync(urm);
+                            user.insertUserRole(urm);
 
                             //Add record to UserDetails table
                             ud = new UserDetail();
@@ -133,7 +131,7 @@ namespace Magma.Web.Controllers
                             ud.User_LastName = signuplname;
                             ud.User_Gender = signupgender;
                             ud.User_Age = signupage;
-                            user.insertUserDetailsAsync(ud);
+                            user.insertUserDetails(ud);
                             return RedirectToAction("Login");
                         }
                     }
@@ -148,11 +146,6 @@ namespace Magma.Web.Controllers
                     ModelState.AddModelError("", "Fields can't be left empty");
                     return View();
                 }
-            }
-            catch (Exception)
-            {
-                return View();
-            }
         }
 
         [HttpGet]

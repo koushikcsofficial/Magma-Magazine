@@ -105,8 +105,8 @@ namespace Magma.ServiceLayer
 
         public bool IsEmailExists(string User_Email)
         {
-            bool IsValid = db.UserAccounts.Any(x => x.User_Email == User_Email.ToLower());
-            return IsValid;
+            bool val= db.UserAccounts.Any(x => x.User_Email == User_Email);
+            return val;
         }
 
         public async Task<int> getAccountIdByEmailAsync(string User_Email)

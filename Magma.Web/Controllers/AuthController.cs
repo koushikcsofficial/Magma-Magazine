@@ -132,6 +132,7 @@ namespace Magma.Web.Controllers
                             ud.User_LastName = signuplname;
                             ud.User_Gender = signupgender;
                             ud.User_Age = signupage;
+                            ud.User_IsVerified = 0;
                             user.insertUserDetails(ud);
                             return RedirectToAction("Login");
                         }

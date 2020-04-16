@@ -29,6 +29,8 @@ namespace Magma.DomainModels
         [StringLength(255)]
         public string User_Avatar { get; set; }
 
+        public byte User_IsVerified { get; set; }
+
         public virtual UserAccount UserAccount { get; set; }
     }
 }

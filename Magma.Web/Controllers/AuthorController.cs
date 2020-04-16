@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Http;
 using System.Web.Mvc;
 
 namespace Magma.Web.Controllers
@@ -10,6 +9,7 @@ namespace Magma.Web.Controllers
     public class AuthorController : Controller
     {
         // GET: Author
+        [Authorize(Roles = "Author")]
         public ActionResult Index()
         {
             return View();

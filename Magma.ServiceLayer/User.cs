@@ -2,10 +2,8 @@
 using Magma.DomainModels;
 using Magma.ServiceContracts;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Magma.ServiceLayer
@@ -201,6 +199,11 @@ namespace Magma.ServiceLayer
         {
             var result = await (db.UserRoles.Where(temp => temp.Role_Name == Role_Name).SingleOrDefaultAsync());
             return result.Role_Id;
+        }
+
+        public bool IsMobilePresent(string MobileNumber)
+        {
+            return db.UserDetails.Any(temp => temp.User_Mobile.Contains(MobileNumber));
         }
 
         public DateTime currentTimeIST()

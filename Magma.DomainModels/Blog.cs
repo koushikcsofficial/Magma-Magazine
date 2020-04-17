@@ -10,13 +10,10 @@ namespace Magma.DomainModels
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Blog()
         {
-            AudioBlogs = new HashSet<AudioBlog>();
             BlogComments = new HashSet<BlogComment>();
-            BlogReactionsMasters = new HashSet<BlogReactionsMaster>();
+            BlogReactions = new HashSet<BlogReaction>();
             BlogsMasters = new HashSet<BlogsMaster>();
             BlogViews = new HashSet<BlogView>();
-            PictureBlogs = new HashSet<PictureBlog>();
-            VideoBlogs = new HashSet<VideoBlog>();
         }
 
         [Key]
@@ -48,24 +45,15 @@ namespace Magma.DomainModels
         public string Blog_DeactiveFrom { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AudioBlog> AudioBlogs { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BlogComment> BlogComments { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BlogReactionsMaster> BlogReactionsMasters { get; set; }
+        public virtual ICollection<BlogReaction> BlogReactions { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BlogsMaster> BlogsMasters { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BlogView> BlogViews { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PictureBlog> PictureBlogs { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VideoBlog> VideoBlogs { get; set; }
     }
 }

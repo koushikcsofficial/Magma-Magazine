@@ -16,6 +16,8 @@ namespace Magma.DomainModels
 
         public int Author_Id { get; set; }
 
+        public byte? Blog_ContentPresent { get; set; }
+
         public virtual BlogCategory BlogCategory { get; set; }
 
         public virtual Blog Blog { get; set; }

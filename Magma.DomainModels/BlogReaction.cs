@@ -1,10 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Magma.DomainModels
 {
-    [Table("BlogReactionsMaster")]
-    public class BlogReactionsMaster
+    public class BlogReaction
     {
         public int Id { get; set; }
 

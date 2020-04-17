@@ -10,8 +10,9 @@ namespace Magma.DomainModels
         public UserAccount()
         {
             BlogComments = new HashSet<BlogComment>();
-            BlogReactionsMasters = new HashSet<BlogReactionsMaster>();
+            BlogReactions = new HashSet<BlogReaction>();
             BlogsMasters = new HashSet<BlogsMaster>();
+            Contents = new HashSet<Content>();
             Subscriptions = new HashSet<Subscription>();
             Subscriptions1 = new HashSet<Subscription>();
             UserLogs = new HashSet<UserLog>();
@@ -52,10 +53,13 @@ namespace Magma.DomainModels
         public virtual ICollection<BlogComment> BlogComments { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BlogReactionsMaster> BlogReactionsMasters { get; set; }
+        public virtual ICollection<BlogReaction> BlogReactions { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BlogsMaster> BlogsMasters { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Content> Contents { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Subscription> Subscriptions { get; set; }

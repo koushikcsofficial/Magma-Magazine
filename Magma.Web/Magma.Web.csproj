@@ -186,6 +186,10 @@
     <Content Include="Views\Shared\_Layout2.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Author\AuthorUserView.cshtml" />
+    <Content Include="Views\Author\AuthorPublicView.cshtml" />
+    <Content Include="Views\Author\BadRequest.cshtml" />
+    <Content Include="Views\User\AuthorCreation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -196,7 +200,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Admin\" />
-    <Folder Include="Views\Author\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Magma.DataAccessLayer\Magma.DataAccessLayer.csproj">

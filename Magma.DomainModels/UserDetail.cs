@@ -26,10 +26,11 @@ namespace Magma.DomainModels
         [StringLength(10)]
         public string User_Gender { get; set; }
 
-        [StringLength(255)]
-        public string User_Avatar { get; set; }
+        public int? User_AvatarId { get; set; }
 
         public byte User_IsVerified { get; set; }
+
+        public virtual Content Content { get; set; }
 
         public virtual UserAccount UserAccount { get; set; }
     }

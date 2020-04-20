@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace Magma.DomainModels
 {
-    public class Blog
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    public partial class Blog
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Blog()
         {
             BlogComments = new HashSet<BlogComment>();
             BlogReactions = new HashSet<BlogReaction>();
+            BlogReportsMasters = new HashSet<BlogReportsMaster>();
             BlogsMasters = new HashSet<BlogsMaster>();
             BlogViews = new HashSet<BlogView>();
         }
@@ -44,11 +45,18 @@ namespace Magma.DomainModels
         [StringLength(50)]
         public string Blog_DeactiveFrom { get; set; }
 
+        public int? Blog_DeactiveBy { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BlogComment> BlogComments { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BlogReaction> BlogReactions { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BlogReportsMaster> BlogReportsMasters { get; set; }
+
+        public virtual UserAccount UserAccount { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BlogsMaster> BlogsMasters { get; set; }

@@ -46,6 +46,8 @@
     <Compile Include="BlogCategory.cs" />
     <Compile Include="BlogComment.cs" />
     <Compile Include="BlogReaction.cs" />
+    <Compile Include="BlogReportsMaster.cs" />
+    <Compile Include="BlogReportType.cs" />
     <Compile Include="BlogsMaster.cs" />
     <Compile Include="BlogType.cs" />
     <Compile Include="BlogView.cs" />

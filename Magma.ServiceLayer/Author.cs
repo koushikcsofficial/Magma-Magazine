@@ -24,10 +24,18 @@ namespace Magma.ServiceLayer
             }
             else
             {
-                string roleName = "Admin";
+                string roleName = "Author";
                 var role = db.UserRoles.Where(x => x.Role_Name == roleName).SingleOrDefault();
                 return db.UserRoleMasters.Any(x => (x.User_Id == Id) && (x.Role_Id == role.Role_Id));
             }
+        }
+
+        public bool IsSubscribed(int? AuthorId, int? UserId)
+        {
+            if ((AuthorId == null || UserId == null) || (AuthorId == null && UserId == null))
+                return false;
+            else
+                return db.Subscriptions.Any(temp => temp.User_Id == UserId && temp.Author_Id == AuthorId);
         }
     }
 }

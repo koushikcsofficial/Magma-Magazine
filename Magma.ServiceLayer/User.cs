@@ -61,13 +61,13 @@ namespace Magma.ServiceLayer
 
         public void updateUserDetails(UserDetail ud)
         {
-            UserDetail existingUd = db.UserDetails.Where(temp => temp.User_Id == ud.User_Id).FirstOrDefault();
+            UserDetail existingUd = db.UserDetails.Where(temp => temp.User_Id == ud.User_Id).SingleOrDefault();
             existingUd.User_FirstName = ud.User_FirstName;
             existingUd.User_LastName = ud.User_LastName;
             existingUd.User_Age = ud.User_Age;
             existingUd.User_Mobile = ud.User_Mobile;
             existingUd.User_Gender = ud.User_Gender;
-            existingUd.User_Avatar = ud.User_Avatar;
+            existingUd.User_AvatarId = ud.User_AvatarId;
             db.SaveChanges();
         }
 
@@ -79,7 +79,23 @@ namespace Magma.ServiceLayer
             existingUd.User_Age = ud.User_Age;
             existingUd.User_Mobile = ud.User_Mobile;
             existingUd.User_Gender = ud.User_Gender;
-            existingUd.User_Avatar = ud.User_Avatar;
+            existingUd.User_AvatarId = ud.User_AvatarId;
+            await db.SaveChangesAsync();
+        }
+
+        public void updateUserToAuthor(UserDetail ud)
+        {
+            UserDetail existingUd = db.UserDetails.Where(temp => temp.User_Id == ud.User_Id).SingleOrDefault();
+            existingUd.User_Mobile = ud.User_Mobile;
+            existingUd.User_AvatarId = ud.User_AvatarId;
+            db.SaveChanges();
+        }
+
+        public async void updateUserToAuthorAsync(UserDetail ud)
+        {
+            UserDetail existingUd = db.UserDetails.Where(temp => temp.User_Id == ud.User_Id).FirstOrDefault();
+            existingUd.User_Mobile = ud.User_Mobile;
+            existingUd.User_AvatarId = ud.User_AvatarId;
             await db.SaveChangesAsync();
         }
 
@@ -145,13 +161,13 @@ namespace Magma.ServiceLayer
             await db.SaveChangesAsync();
         }
 
-        public void insertUserRole(UserRoleMaster urm)
+        public void insertUserRoleMaster(UserRoleMaster urm)
         {
             db.UserRoleMasters.Add(urm);
             db.SaveChanges();
         }
 
-        public async void insertUserRoleAsync(UserRoleMaster urm)
+        public async void insertUserRoleMasterAsync(UserRoleMaster urm)
         {
             db.UserRoleMasters.Add(urm);
             await db.SaveChangesAsync();
@@ -210,6 +226,29 @@ namespace Magma.ServiceLayer
         {
             DateTime indianTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, INDIAN_ZONE);
             return indianTime;
+        }
+
+        public void insertContent(Content content)
+        {
+            db.Contents.Add(content);
+            db.SaveChanges();
+        }
+
+        public async void insertContentAsync(Content content)
+        {
+            db.Contents.Add(content);
+            await db.SaveChangesAsync();
+        }
+
+        public int getUserAvatarId(int UserId, string IP)
+        {
+            var result = db.Contents.Where(temp => temp.User_Uploaded == UserId && temp.Uploaded_From == IP).OrderByDescending(x => x.Uploaded_At).FirstOrDefault();
+            return result.Content_Id;
+        }
+
+        public Task<int> getUserAvatarIdAsync(int UserId, string IP)
+        {
+            throw new NotImplementedException();
         }
     }
 }

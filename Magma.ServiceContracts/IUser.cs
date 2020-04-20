@@ -13,8 +13,11 @@ namespace Magma.ServiceContracts
         void insertUserDetails(UserDetail ud);
         void insertUserDetailsAsync(UserDetail ud);
 
-        void insertUserRole(UserRoleMaster urm);
-        void insertUserRoleAsync(UserRoleMaster urm);
+        void insertContent(Content content);
+        void insertContentAsync(Content content);
+
+        void insertUserRoleMaster(UserRoleMaster urm);
+        void insertUserRoleMasterAsync(UserRoleMaster urm);
 
         void registerUserLog(UserLog ul);
         void registerUserLogAsync(UserLog ul);
@@ -39,6 +42,9 @@ namespace Magma.ServiceContracts
 
         int getUserLogId(string IP);
         Task<int> getUserLogIdAsync(string IP);
+
+        int getUserAvatarId(int UserId, string IP);
+        Task<int> getUserAvatarIdAsync(int UserId, string IP);
 
         int getRoleIdByName(string Role_Name);
         Task<int> getRoleIdByNameAsync(string Role_Name);

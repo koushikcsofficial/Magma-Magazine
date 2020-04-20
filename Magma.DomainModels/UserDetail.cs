@@ -1,9 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace Magma.DomainModels
 {
-    public class UserDetail
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    public partial class UserDetail
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

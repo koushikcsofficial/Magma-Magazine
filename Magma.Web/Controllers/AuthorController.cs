@@ -11,8 +11,10 @@ namespace Magma.Web.Controllers
     public class AuthorController : Controller
     {
         Author author = new Author();
+        User user = new User();
         // GET: Author
         [AllowAnonymous]
+        [HttpGet]
         public ActionResult Index(int? id)
         {
             if (id == null)
@@ -23,13 +25,22 @@ namespace Magma.Web.Controllers
             {
                 if (author.IsAuthorById(id))
                 {
-                    if (User.Identity.IsAuthenticated && User.IsInRole("Author"))
+                    if (User.Identity.IsAuthenticated && id==user.getAccountIdByEmail(User.Identity.Name))
                     {
-                        return View("AuthorUserView");
+                        return RedirectToAction("AuthorIndex");
                     }
                     else
                     {
-                        return View("AuthorPublicView");
+                        if(User.Identity.IsAuthenticated && author.IsSubscribed(id, user.getAccountIdByEmail(User.Identity.Name)))
+                        {
+                            ViewData["SubscriptionStatus"] = "Subscribed";
+                            return View("PublicView");
+                        }
+                        else
+                        {
+                            ViewData["SubscriptionStatus"] = "Not Subscribed";
+                            return View("PublicView");
+                        }
                     }
                 }
                 else
@@ -39,6 +50,11 @@ namespace Magma.Web.Controllers
             }
         }
 
-
+        [Authorize(Roles ="Author")]
+        [HttpGet]
+        public ActionResult AuthorIndex()
+        {
+            return View("UserView");
+        }
     }
 }

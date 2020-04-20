@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AuthorPublicView</title>
+</head>
+<body>
+    <div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <p>You can subscribe the Author.</p>
+            if (ViewData["SubscriptionStatus"].ToString() == "Subscribed")
+            {
+                <button type="button" disabled>Subscribed</button>
+            }
+            else
+            {
+                <button type="button">Subscribe here</button>
+            }
+
+            <a href="~/Auth/Logout">Log out from your account</a>
+        }
+        else
+        {
+            <p>You can't Subscribe this author.</p>
+        }
+    </div>
+</body>
+</html>

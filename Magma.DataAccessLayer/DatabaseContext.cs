@@ -1,9 +1,12 @@
-﻿using Magma.DomainModels;
-using System.Data.Entity;
-
-namespace Magma.DataAccessLayer
+﻿namespace Magma.DataAccessLayer
 {
-    public class DatabaseContext: DbContext
+    using System;
+    using System.Data.Entity;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Linq;
+    using Magma.DomainModels;
+
+    public partial class DatabaseContext : DbContext
     {
         public DatabaseContext()
             : base("name=DatabaseConnection")
@@ -13,6 +16,8 @@ namespace Magma.DataAccessLayer
         public virtual DbSet<BlogCategory> BlogCategories { get; set; }
         public virtual DbSet<BlogComment> BlogComments { get; set; }
         public virtual DbSet<BlogReaction> BlogReactions { get; set; }
+        public virtual DbSet<BlogReportsMaster> BlogReportsMasters { get; set; }
+        public virtual DbSet<BlogReportType> BlogReportTypes { get; set; }
         public virtual DbSet<Blog> Blogs { get; set; }
         public virtual DbSet<BlogsMaster> BlogsMasters { get; set; }
         public virtual DbSet<BlogType> BlogTypes { get; set; }
@@ -31,10 +36,6 @@ namespace Magma.DataAccessLayer
                 .Property(e => e.Category_Name)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<BlogCategory>()
-                .Property(e => e.Category_Image)
-                .IsUnicode(false);
-
             modelBuilder.Entity<BlogComment>()
                 .Property(e => e.Comment)
                 .IsUnicode(false);
@@ -43,6 +44,15 @@ namespace Magma.DataAccessLayer
                 .HasMany(e => e.BlogComments1)
                 .WithOptional(e => e.BlogComment1)
                 .HasForeignKey(e => e.Parent_Id);
+
+            modelBuilder.Entity<BlogReportType>()
+                .Property(e => e.Report_Name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<BlogReportType>()
+                .HasMany(e => e.BlogReportsMasters)
+                .WithRequired(e => e.BlogReportType)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Blog>()
                 .Property(e => e.Blog_Title)
@@ -66,6 +76,11 @@ namespace Magma.DataAccessLayer
 
             modelBuilder.Entity<Blog>()
                 .HasMany(e => e.BlogReactions)
+                .WithRequired(e => e.Blog)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Blog>()
+                .HasMany(e => e.BlogReportsMasters)
                 .WithRequired(e => e.Blog)
                 .WillCascadeOnDelete(false);
 
@@ -120,6 +135,23 @@ namespace Magma.DataAccessLayer
                 .HasMany(e => e.BlogReactions)
                 .WithRequired(e => e.UserAccount)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<UserAccount>()
+                .HasMany(e => e.BlogReportsMasters)
+                .WithRequired(e => e.UserAccount)
+                .HasForeignKey(e => e.Reported_By)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<UserAccount>()
+                .HasMany(e => e.BlogReportsMasters1)
+                .WithRequired(e => e.UserAccount1)
+                .HasForeignKey(e => e.Report_VerifiedBy)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<UserAccount>()
+                .HasMany(e => e.Blogs)
+                .WithOptional(e => e.UserAccount)
+                .HasForeignKey(e => e.Blog_DeactiveBy);
 
             modelBuilder.Entity<UserAccount>()
                 .HasMany(e => e.BlogsMasters)

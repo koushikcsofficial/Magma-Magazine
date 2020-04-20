@@ -94,8 +94,7 @@ namespace Magma.Web.Controllers
                         ua = new UserAccount();
                         if (await user.IsEmailExistsAsync(signupemail))
                         {
-                            ModelState.AddModelError("", "Email Already Exists in User Auth");
-                            return View();
+                            return Json("Email already Exists", JsonRequestBehavior.AllowGet);
                         }
                         else
                         {
@@ -108,22 +107,24 @@ namespace Magma.Web.Controllers
                             ua.User_AccountCreatedAt = user.currentTimeIST();
                             //by default after creating the account user account will be active
                             ua.User_IsActive = 1;
+                            string ip = "";
                             try
                             {
                                 //trying to get the client Ip
-                                ua.User_AccountCreatedFrom = GetIp();
+                                ip = GetIp();
                             }
                             catch (Exception)
                             {
-                                ua.User_AccountCreatedFrom = "N/A";
+                                ip = "N/A";
                             }
+                            ua.User_AccountCreatedFrom = ip;
                             user.insertUserAccount(ua);
 
                             //Get the userId from the row to update UserRoleMaster table with the role "User"
                             urm = new UserRoleMaster();
                             urm.User_Id = user.getAccountIdByEmail(signupemail);
                             urm.Role_Id = user.getRoleIdByName("User");
-                            user.insertUserRole(urm);
+                            user.insertUserRoleMaster(urm);
 
                             //Add record to UserDetails table
                             ud = new UserDetail();
@@ -139,14 +140,12 @@ namespace Magma.Web.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Password and Confirm password didn't match");
-                        return View();
+                        return Json("Password and confirm password didn't match", JsonRequestBehavior.AllowGet);
                     }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Fields can't be left empty");
-                    return View();
+                    return Json("Fields can't be left empty", JsonRequestBehavior.AllowGet);
                 }
             }
             catch (Exception)

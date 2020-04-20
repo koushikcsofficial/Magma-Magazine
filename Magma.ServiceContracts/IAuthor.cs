@@ -8,6 +8,8 @@ namespace Magma.ServiceContracts
 {
     public interface IAuthor
     {
-        bool IsAuthorById(int Id);
+        bool IsAuthorById(int? Id);
+
+        bool IsSubscribed(int? AuthorId, int? UserId);
     }
 }

@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout1.cshtml";
 }
@@ -11,9 +10,9 @@
     <br />
     <p> This post you can see and can be liked</p>
     <br />
-    if (User.IsInRole("Author") || User.IsInRole("Admin"))
+    if (User.IsInRole("Author"))
     {
-        <a href="~/Author/Index"> Go to the Author Section to add blog</a>
+        <a href="~/Author/AuthorIndex"> Switch To Author View</a>
         <br />
     }
     else

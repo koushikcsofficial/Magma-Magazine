@@ -1,16 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
 namespace Magma.DomainModels
 {
-    public class UserAccount
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    public partial class UserAccount
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UserAccount()
         {
             BlogComments = new HashSet<BlogComment>();
             BlogReactions = new HashSet<BlogReaction>();
+            BlogReportsMasters = new HashSet<BlogReportsMaster>();
+            BlogReportsMasters1 = new HashSet<BlogReportsMaster>();
+            Blogs = new HashSet<Blog>();
             BlogsMasters = new HashSet<BlogsMaster>();
             Contents = new HashSet<Content>();
             Subscriptions = new HashSet<Subscription>();
@@ -54,6 +58,15 @@ namespace Magma.DomainModels
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BlogReaction> BlogReactions { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BlogReportsMaster> BlogReportsMasters { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BlogReportsMaster> BlogReportsMasters1 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Blog> Blogs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BlogsMaster> BlogsMasters { get; set; }
